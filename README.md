@@ -1,12 +1,12 @@
-#h1 Angelist Syndicate Scraped
+# Angelist Syndicate List
 
-#h2 Summary
+## Summary
 
 Need to find which syndicate lead to approach on Angelist?
 Frustrated by the fact that Agenlist won't let you search syndicates?
 No more!
 
-#h2 To Run
+## To Run
 
 Clone the project. The run "bundle install" to install dependencies. Then run:
 
@@ -16,11 +16,11 @@ Clone the project. The run "bundle install" to install dependencies. Then run:
 
 You'll get a file "syndicates.csv". Do what you need to do.
 
-#h2 License
+## License
 
 Do whatever you want. I disavow responsibility for any consequences of actually running this script.
 
-#h2 Contributing
+## Contributing
 
 1. Fork
 2. Add

@@ -25,7 +25,7 @@ class SyndicateList
   def export
     headers = %w(name deals recent_deals investment valuation blurb url)
     data = ([headers] + syndicates.map(&:to_a)).map(&:to_csv).join("")
-    File.write("output.csv", data)
+    File.write("syndicates.csv", data)
   end
 
   private
