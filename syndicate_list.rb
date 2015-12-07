@@ -1,13 +1,6 @@
-#!/usr/bin/env ruby
-
-require "rubygems"
-require "bundler/setup"
 require "csv"
-require_relative "./string"
-require_relative "./fragment"
-require_relative "./syndicate"
+Dir["./lib/*.rb"].each { |f| require f }
 
-Bundler.require
 
 class SyndicateList
   attr_reader :fragments
@@ -15,7 +8,7 @@ class SyndicateList
   def initialize
     @fragments = []
     @fragments << Fragment.new(url)
-    build_fragments
+#    build_fragments
   end
 
   def url
@@ -23,7 +16,7 @@ class SyndicateList
   end
 
   def export
-    headers = %w(name deals recent_deals investment valuation blurb url)
+    headers = %w(name deals recent_deals investment valuation tags url)
     data = ([headers] + syndicates.map(&:to_a)).map(&:to_csv).join("")
     File.write("syndicates.csv", data)
   end
@@ -42,5 +35,3 @@ class SyndicateList
   end
 
 end
-
-SyndicateList.new.export
