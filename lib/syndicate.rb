@@ -1,4 +1,4 @@
-class Syndicate
+class Syndicate < AngelObj
   attr_reader :nok
 
   def initialize(nokogiri)
@@ -6,7 +6,7 @@ class Syndicate
   end
 
   def to_a
-    [name, deals, recent_deals, investment, valuation, blurb, url]
+    [name, deals, recent_deals, investment, valuation, tags, url]
   end
 
   private
@@ -26,12 +26,16 @@ class Syndicate
     host + nok.css(".syndicate-details").first&.attr("data-details-url")
   end
 
-  def host
-    "https://angel.co"
-  end
-
   def investment
     details.text[/Typical Syndicate Investment(.+?)Typical/m, 1].clean
+  end
+
+  def lead
+    SyndicateLead.new(lead_url)
+  end
+
+  def lead_url
+    url.gsub(/\/syndicate$/, "")
   end
 
   def name
@@ -44,6 +48,10 @@ class Syndicate
 
   def recent_deals
     nok.css(".s-vgPadTop1").text.clean
+  end
+
+  def tags
+    lead.tags.map{|k, v| v > 1 ? "#{k} (x#{v})" : k.to_s }.join(";")
   end
 
   def valuation
