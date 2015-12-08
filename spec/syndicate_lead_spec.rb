@@ -1,6 +1,7 @@
 require_relative "./spec_helper"
 
 RSpec.describe SyndicateLead do
+  use_vcr_cassette
 
   describe "penchina" do
     subject do
@@ -20,8 +21,7 @@ RSpec.describe SyndicateLead do
     end
 
     it "includes tags" do
-      byebug
-      expect(subject.tags.keys).to_not be_blank
+      expect(subject.tags.keys.count).to be > 10
     end
   end
 
