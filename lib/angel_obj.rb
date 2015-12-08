@@ -11,19 +11,12 @@ class AngelObj
     "https://angel.co"
   end
 
-  def logger
-    return @@logger if defined?(@@logger)
-    @@logger = Logger.new(STDOUT)
-    @@logger.level = LOG_LEVEL || Logger::INFO
-    @@logger
-  end
-
   def page
-    return @page if @page
-    logger.info "Fetching #{url}"
-    @page = Nokogiri::HTML(open(url))
+      return @page if @page
+    @page = Nokogiri::HTML(PageCache.instance.fetch(url))
    rescue StandardError => e
-     logger.error "Execption fetching #{url}"
+     LOGGER.error "Execption fetching #{url}"
+     byebug
      @page = Nokogiri::HTML("<html></html>")
   end
 end
