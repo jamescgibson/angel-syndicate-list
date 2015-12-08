@@ -1,3 +1,5 @@
+require_relative "./angel_obj"
+
 class Startup < AngelObj
   def name
     page.css("h1.name").first&.text.clean

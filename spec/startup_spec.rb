@@ -1,6 +1,7 @@
 require_relative "./spec_helper"
 
 RSpec.describe Startup do
+  use_vcr_cassette
   subject do
     Startup.new("https://angel.co/sprig")
   end
