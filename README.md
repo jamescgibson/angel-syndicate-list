@@ -1,9 +1,9 @@
-# Angelist Syndicate List
+# AngelList Syndicate List
 
 ## Summary
 
-Need to find which syndicate lead to approach on Angelist?
-Frustrated by the fact that Agenlist won't let you search syndicates?
+Need to find which syndicate lead to approach on AngelList?
+Frustrated by the fact that AngelList won't let you search syndicates?
 No more!
 
 ## To Run
@@ -11,10 +11,12 @@ No more!
 Clone the project. The run "bundle install" to install dependencies. Then run:
 
 ```
-./syndicate-list.rb
+bin/export.rb
 ```
 
-You'll get a file "syndicates.csv". Do what you need to do.
+It'll take a loooong time - it's aggregating the tags for every startup that every syndicate lead has every invested in.
+
+Eventually you'll get a file "syndicates.csv". Do what you need to do.
 
 ## License
 
